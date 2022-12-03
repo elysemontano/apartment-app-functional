@@ -8,6 +8,7 @@ import ApartmentEdit from "./pages/ApartmentEdit"
 import ApartmentIndex from "./pages/ApartmentIndex"
 import ApartmentNew from "./pages/ApartmentNew"
 import ApartmentShow from "./pages/ApartmentShow"
+import MyApartments from "./pages/MyApartments"
 import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import mockApartments from "./mockApartments"
@@ -36,6 +37,7 @@ const App = (props) => {
       <Routes>
         <Route exact path="/" element={<Home {...props} />} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
+        <Route path="/myapartments" element={<MyApartments />} />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
         <Route path="/apartmentnew" element={<ApartmentNew />} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
