@@ -43,6 +43,19 @@ const App = (props) => {
     .catch((errors) => console.log("Apartment create errors:", errors))
   }
 
+  const editApartment = (apartment, id) => {
+    fetch(`/apartments/${id}`, {
+      body: JSON.stringify(apartment),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then((response) => response.json)
+    .then(() => readApartments())
+    .catch((errors) => console.log("Apartment update errors", errors))
+  }
+
   return (
     <BrowserRouter>
       <Header {...props} />
@@ -52,7 +65,7 @@ const App = (props) => {
         <Route path="/myapartments" element={<MyApartments current_user={props.current_user} apartments={apartments} />} />
         <Route path="/apartmentshow/:id" element={<ApartmentShow {...props} apartments={apartments} />} />
         <Route path="/apartmentnew" element={<ApartmentNew current_user={props.current_user} createApartment={createApartment} />} />
-        <Route path="/apartmentedit" element={<ApartmentEdit />} />
+        <Route path="/apartmentedit/:id" element={<ApartmentEdit current_user={props.current_user} editApartment={editApartment} apartments={apartments} />} />
         <Route element={<NotFound />} />
       </Routes>
       <Footer />

@@ -1,5 +1,5 @@
 import React from "react"
-import { useParams } from "react-router-dom"
+import { useParams, NavLink } from "react-router-dom"
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
@@ -24,7 +24,11 @@ const ApartmentShow = (props) => {
             
             {props.logged_in &&
               <>            
-                <Button>Edit Listing</Button>
+                <Button>
+                  <NavLink to={`/apartmentedit/${currentApartment.id}`} className="nav-link">
+                    Edit Listing
+                  </NavLink>
+                </Button>
                 <Button>Delete Listing</Button>
               </>
             }
