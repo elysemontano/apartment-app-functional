@@ -1,6 +1,7 @@
 import React from 'react'
 import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
+  import { NavLink } from "react-router-dom"
 
 const MyApartments = ({current_user, apartments}) => {
 
@@ -17,8 +18,11 @@ const MyApartments = ({current_user, apartments}) => {
                 <CardTitle>${apartment.price}/month</CardTitle>
                 <CardSubtitle>{apartment.street}, {apartment.city}, {apartment.state}</CardSubtitle>
                 <CardSubtitle>{apartment.bedrooms} Bedroom {apartment.bathrooms}, Bath</CardSubtitle>
-                <Button>More Details</Button>
-                <Button>Edit Listing</Button>
+                <Button>
+                  <NavLink to={`/apartmentshow/${apartment.id}`} className="nav-link">
+                      More Details
+                    </NavLink>
+                </Button>
               </CardBody>
             </Card>
         )
