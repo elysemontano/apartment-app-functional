@@ -3,7 +3,6 @@ import { Card, CardImg, CardText, CardBody,
   CardTitle, CardSubtitle, Button } from 'reactstrap';
 
 const MyApartments = ({current_user, apartments}) => {
-  console.log(current_user);
 
   const myApartments = apartments?.filter(apartment => current_user.id === apartment.user_id)
 
