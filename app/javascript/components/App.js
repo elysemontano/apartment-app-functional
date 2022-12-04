@@ -21,14 +21,12 @@ const App = (props) => {
   }, [])
 
   const readApartments = () => {
-    // fetch("/apartments")
-    //   .then((response) => response.json())
-    //   .then((payload) => {
-    //     setApartments(payload)
-    //   })
-    //   .catch((error) => console.log(error))
-
-    setApartments(mockApartments)
+    fetch("/apartments")
+      .then((response) => response.json())
+      .then((payload) => {
+        setApartments(payload)
+      })
+      .catch((error) => console.log(error))
   }
 
   return (
@@ -37,7 +35,7 @@ const App = (props) => {
       <Routes>
         <Route exact path="/" element={<Home {...props} />} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
-        <Route path="/myapartments" element={<MyApartments />} />
+        <Route path="/myapartments" element={<MyApartments current_user={props.current_user} apartments={apartments} />} />
         <Route path="/apartmentshow" element={<ApartmentShow />} />
         <Route path="/apartmentnew" element={<ApartmentNew />} />
         <Route path="/apartmentedit" element={<ApartmentEdit />} />
