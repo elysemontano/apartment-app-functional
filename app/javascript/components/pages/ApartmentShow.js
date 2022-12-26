@@ -29,7 +29,9 @@ const ApartmentShow = (props) => {
                     Edit Listing
                   </NavLink>
                 </Button>
-                <Button>Delete Listing</Button>
+                <Button onClick={() => props.deleteApartment(currentApartment.id)}>
+                  <NavLink to={`/myapartments`} className="nav-link">Delete Listing</NavLink>
+                </Button>
               </>
             }
           </CardBody>
