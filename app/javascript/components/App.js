@@ -56,6 +56,18 @@ const App = (props) => {
     .catch((errors) => console.log("Apartment update errors", errors))
   }
 
+  const deleteApartment = (id) => {
+    fetch(`/apartments/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then((response) => response.json())
+    .then(() => readApartments())
+    .catch((errors) => console.log("delete errors:", errors))
+  }
+
   return (
     <BrowserRouter>
       <Header {...props} />
@@ -63,7 +75,7 @@ const App = (props) => {
         <Route exact path="/" element={<Home {...props} />} />
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
         <Route path="/myapartments" element={<MyApartments current_user={props.current_user} apartments={apartments} />} />
-        <Route path="/apartmentshow/:id" element={<ApartmentShow {...props} apartments={apartments} />} />
+        <Route path="/apartmentshow/:id" element={<ApartmentShow {...props} apartments={apartments} deleteApartment={deleteApartment} />} />
         <Route path="/apartmentnew" element={<ApartmentNew current_user={props.current_user} createApartment={createApartment} />} />
         <Route path="/apartmentedit/:id" element={<ApartmentEdit current_user={props.current_user} editApartment={editApartment} apartments={apartments} />} />
         <Route element={<NotFound />} />
