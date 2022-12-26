@@ -18,6 +18,16 @@
  @import "bootstrap";
  @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
+ a {
+   text-decoration: none!important;
+   color: inherit!important;
+ }
+
+ body {
+   font-family: 'Inter', sans-serif;
+   color: #EAE2D4;
+ }
+
 
 //  Not Found Page:
  .not-found-background {
@@ -31,11 +41,18 @@
  }
 
  .not-found-text {
-    font-family: 'Inter', sans-serif;
-    color: #EAE2D4;
     text-align: center;
     border: 5px solid;
     position: absolute;
     margin-top: 20vh;
     padding: 20px;
+ }
+
+ // Navbar:
+ .nav {
+   background-color: #2D2726;
+   padding: 10px;
+   display: flex;
+   justify-content: flex-end;
+   font-size: 15px;
  }
