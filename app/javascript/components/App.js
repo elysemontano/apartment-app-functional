@@ -78,7 +78,7 @@ const App = (props) => {
         <Route path="/apartmentshow/:id" element={<ApartmentShow {...props} apartments={apartments} deleteApartment={deleteApartment} />} />
         <Route path="/apartmentnew" element={<ApartmentNew current_user={props.current_user} createApartment={createApartment} />} />
         <Route path="/apartmentedit/:id" element={<ApartmentEdit current_user={props.current_user} editApartment={editApartment} apartments={apartments} />} />
-        <Route element={<NotFound />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
