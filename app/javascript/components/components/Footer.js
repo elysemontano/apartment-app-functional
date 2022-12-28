@@ -3,7 +3,9 @@ import React from "react"
 const Footer = () => {
   return (
     <>
-      <h3>Footer</h3>
+      <div className="footer">
+        <h3 style={{fontSize: "15px"}}>©LEARN Academy</h3>
+      </div>
     </>
   )
 }

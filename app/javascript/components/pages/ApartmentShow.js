@@ -6,37 +6,46 @@ import { Card, CardImg, CardText, CardBody,
 const ApartmentShow = (props) => {
 
   let {id} = useParams()
-  const currentApartment = props.apartments.find((apartment) => apartment.id === +id)
+  const currentApartment = props.apartments?.find((apartment) => apartment.id === +id)
 
   return (
     <>
+    <div className="apartments-body">
       {currentApartment &&      
-        <Card>
+        <Card className='apartment-card'>
           <CardImg top width="100%" src={currentApartment.image} alt="" />
-          <CardBody>
-            <CardTitle>${currentApartment.price}/month</CardTitle>
-            <CardSubtitle>{currentApartment.street}, {currentApartment.city}, {currentApartment.state}</CardSubtitle>
-            <CardSubtitle>{currentApartment.bedrooms} Bedroom {currentApartment.bathrooms}, Bath</CardSubtitle>
-            <CardSubtitle>Pets: {currentApartment.pets}</CardSubtitle>
-            <CardSubtitle>Contact Us!</CardSubtitle>
-            <CardSubtitle>Manager: {currentApartment.manager}</CardSubtitle>
-            <CardSubtitle>Email: {currentApartment.email}</CardSubtitle>
-            
-            {props.logged_in &&
-              <>            
-                <Button>
-                  <NavLink to={`/apartmentedit/${currentApartment.id}`} className="nav-link">
-                    Edit Listing
+          <CardBody className="apartment-text apartment-font-size">
+            <div className="grid-row">
+              <div className="show-apartment-info">
+                <CardTitle><b>${currentApartment.price}/month</b></CardTitle>
+                <CardSubtitle>{currentApartment.street}, {currentApartment.city}, {currentApartment.state}</CardSubtitle>
+                <CardSubtitle>{currentApartment.bedrooms} Bedroom {currentApartment.bathrooms}, Bath</CardSubtitle>
+                <CardSubtitle>Pets: {currentApartment.pets}</CardSubtitle>
+              </div>
+              <div className="show-contact-info">
+                <CardSubtitle><b>Contact Us!</b></CardSubtitle>
+                <CardSubtitle>Manager: {currentApartment.manager}</CardSubtitle>
+                <CardSubtitle>Email: {currentApartment.email}</CardSubtitle>
+              </div>
+              {props.logged_in && props.current_user.id === currentApartment.user_id &&
+                  <div className="show-button">            
+                  <NavLink to={`/apartmentedit/${currentApartment.id}`} className="nav-link edit-listing">
+                    <Button className="apartment-button">
+                        Edit Listing
+                    </Button>
                   </NavLink>
-                </Button>
-                <Button onClick={() => props.deleteApartment(currentApartment.id)}>
-                  <NavLink to={`/myapartments`} className="nav-link">Delete Listing</NavLink>
-                </Button>
-              </>
-            }
+                  <NavLink to={`/myapartments`} className="nav-link">
+                    <Button onClick={() => props.deleteApartment(currentApartment.id)} className="apartment-button">
+                        Delete Listing
+                    </Button>
+                  </NavLink>
+                </div>     
+              }
+            </div>
           </CardBody>
         </Card>
       }
+    </div>
     </>
   )
 }
