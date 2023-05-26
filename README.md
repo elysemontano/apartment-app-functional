@@ -1,8 +1,11 @@
 # 🏘 Apartment App
 
-This app has been created for you to mimic the feeling of entering into a developer role where there is established code that you have not created. This apartment application has a few features that have been created for you and some key items that have been left totally untouched. Part of your job as a developer is to be able to pick up code that has already been created, understand what is going on with it, and continue the development of that code.
+This apartment application was built to completely build out a curriculum shift to functional components.  Full CRUD was implemented and styling is reflective of [Figma wireframe](https://www.figma.com/file/If1WCghFfg5Balueeb2Tgv/Apartment-App?type=design&node-id=0%3A1&t=vKzKbBadzMqaOlfb-1) created for students.
 
-## 👨‍💻 How We Got Here
+## Deployment
+Deployment was done through Render. Link can be found: [Apartment App](https://apartment-app-h19o.onrender.com/)
+
+## 👨‍💻 Process to build application
 
 ```
 $ rails new apartment-app -d postgresql -T
@@ -167,42 +170,3 @@ To run the existing testing suite, run:
 yarn test
 rspec spec
 ```
-
-## 🧹 Linting
-
-To run the linter and find errors in React, run:
-
-```bash
-yarn eslint .
-```
-
-To run the linter and find errors in Rails, run:
-
-```bash
-standardrb
-```
-
-### Apartment Data Specs
-
-Part of your responsibility will be to build out robust tests both for models and for requests.
-Tests you will need are:
-
-REQUEST:
-
-- to ensure a user can see all apartments
-- to ensure a user can see all apartments that belong to them
-- to ensure a user can make a new apartment
-- to ensure a user can update an apartment
-- to ensure a user can remove an apartment
-- to ensure a user cannot make a new apartment with nil values
-- to ensure an error will be thrown if an unregistered user tried to make an apartment
-- to ensure an error will be thrown if a user tries to edit an apartment that doesn't belong to them
-- to ensure an error will be thrown if a user tries to delete an apartment that doesn't belong to them
-
-MODELS:
-
-- to ensure apartment is valid
-- to ensure a user cannot make a new apartment with nil values
-- to ensure a user cannot make a new apartment that already exists in the database
-- to ensure a user cannot update an apartment with nil values
-- to ensure a user cannot update another user's apartment
